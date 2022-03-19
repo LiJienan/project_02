@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./jquery.js"></script>
+</head>
+
+<body>
+    <button id="get">发起get请求</button>
+    <button id="post">发起post请求</button>
+    <script>
+        /*
+       $.ajax({
+            type:'post',  //请求的方式
+            url:'', //请求的url地址
+            data: {},  //这次请求要携带的数据
+            success: function (res) {  //请求成功之后的回调函数
+                console.log(res);
+            }
+        })
+        
+        */
+        $(function () {
+            $('#get').click(function () {
+                $.ajax({
+                    type: 'get',
+                    url: 'http://www.liulongbin.top:3006/api/getbooks',
+                    data: {
+                        // id: 1,
+                    },
+                    success: function (res) {
+                        console.log(res);
+                    }
+                })
+            });
+            //post
+            $('#post').click(function () {
+                $.ajax({
+                    type: 'post',
+                    url: 'http://www.liulongbin.top:3006/api/addbook',
+                    data: {
+                        bookname: '十亿个为什么',
+                        author: '佚名',
+                        publisher: '上海lala出版社'
+                    },
+                    success: function (res) {
+                        console.log(res);
+                    }
+
+                })
+            })
+
+        })
+
+
+    </script>
+</body>
+
+</html>

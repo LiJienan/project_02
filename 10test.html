@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./bootstrap.css">
+    <script src="./jquery.js"></script>
+</head>
+
+<body style="padding: 30px;width: 1000px;margin:auto">
+    <!-- 添加图书的panel面板 -->
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">添加新员工</h3>
+        </div>
+        <div class="panel-body form-inline">
+
+            <div class="input-group">
+                <div class="input-group-addon">姓名</div>
+                <input type="text" class="form-control" id="iptName" placeholder="请输入姓名">
+            </div>
+            <div class="input-group">
+                <div class="input-group-addon">电话</div>
+                <input type="text" class="form-control" id="iptTel" placeholder="请输入手机号">
+            </div>
+            <div class="input-group">
+                <div class="input-group-addon">薪资</div>
+                <input type="text" class="form-control" id="iptMoney" placeholder="请输入薪资">
+            </div>
+            <button id="btnAdd" class="btn btn-primary">添加</button>
+
+        </div>
+    </div>
+
+    <!-- 表格 -->
+
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+
+                <th>姓名</th>
+                <th>手机号</th>
+                <th>薪资</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody id="tb">
+            <tr>
+                <td>王一博</td>
+                <td>188888888</td>
+                <td>3000</td>
+                <td><button class="del">删除</button></td>
+            </tr>
+            <tr>
+                <td>王二博</td>
+                <td>188888777</td>
+                <td>4000</td>
+                <td><button class="del">删除</button></td>
+            </tr>
+            <tr>
+                <td>王三博</td>
+                <td>188888666</td>
+                <td>5000</td>
+                <td><button class="del">删除</button></td>
+            </tr>
+
+        </tbody>
+    </table>
+    <script>
+        $('#btnAdd').click(function () {
+            let name = $('#iptName').val();
+            let tel = $('#iptTel').val();
+            let money = $('#iptMoney').val();
+            console.log(name, tel, money);
+            $('#tb').append(`<tr>
+                <td>${name}</td>
+                <td>${tel}</td>
+                <td>${money}</td>
+                <td><button class="del">删除</button></td>
+                </tr>
+            `)
+            $('#iptName').val('');
+            $('#iptTel').val('');
+            $('#iptMoney').val('');
+
+        });
+        $('table').on('click', '.del', function () {
+            let res = confirm('你确定要删除吗');
+            if (res) {
+                $(this).parent().parent().remove();
+            }
+        })
+    </script>
+
+</body>
+
+</html>
